@@ -12,3 +12,18 @@ Install
 ```bash
 dotnet add package Swashbuckle.AspNetCore.SwaggerUi
 ```
+
+Then add the following to the `Program.cs`
+
+```csharp
+if (app.Environment.IsDevelopment())
+{
+    app.MapOpenApi();
+    app.UseSwaggerUI(options =>
+    {
+        options.SwaggerEndpoint("/openapi/v1.json", "v1");
+    });
+}
+```
+
+The UI is hosted on the `/swagger/` path
